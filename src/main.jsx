@@ -26,7 +26,7 @@ const App = () => {
       if(!token){
         setAdmin(false);
       } else {
-        axios.defaults.headers.common["Authorization"] = token;
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`; // Ensure 'Bearer' is included
         const response = await axios.get(import.meta.env.VITE_SERVER_URL+'/obsidianDb/verify-token');
         console.log(response);
         return response.data.ok ? loginHandle(token) : setAdmin(false);}
