@@ -25,6 +25,7 @@ const App = () => {
     try {
       if(!token){
         setAdmin(false);
+        console.log("Token is misssing!!")
       } else {
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`; // Ensure 'Bearer' is included
         const response = await axios.get(import.meta.env.VITE_SERVER_URL+'/obsidianDb/verify-token');
@@ -39,7 +40,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login onLogin={loginHandle} token={token}/>} />
+        <Route path="/" element={<Login onLogin={loginHandle}/>} />
         <Route path="/secret" element={admin ? <FrontendReal_TimeEditor /> : <div aria-label="Forbidden">Forbidden</div>} />
       </Routes>
     </Router>
