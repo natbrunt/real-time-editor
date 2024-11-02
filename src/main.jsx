@@ -33,7 +33,7 @@ const App = () => {
         return response.data.ok ? loginHandle(token) : setAdmin(false);}
    }catch(error){console.log(error)}}
   verify_token();
- }, [token])
+ }, [])
  
 
 
