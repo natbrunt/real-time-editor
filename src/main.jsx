@@ -39,7 +39,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login onLogin={loginHandle} />} />
+        <Route path="/" element={<Login onLogin={loginHandle} token={token}/>} />
         <Route path="/secret" element={admin ? <FrontendReal_TimeEditor /> : <div aria-label="Forbidden">Forbidden</div>} />
       </Routes>
     </Router>
