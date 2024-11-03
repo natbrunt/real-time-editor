@@ -35,16 +35,11 @@ const App = () => {
   verify_token();
  }, [])
  
-  // Memoize the rendering of the FrontendReal_TimeEditor component
-  const renderEditor = () => {
-    return admin ? <FrontendReal_TimeEditor /> : <div>Forbidden</div>;
-  };
-
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login onLogin={loginHandle}/>} />
-        <Route path="/secret" element={renderEditor()} />
+        <Route path="/secret" element={<FrontendReal_TimeEditor} admin={admin}/>
       </Routes>
     </Router>
   );
