@@ -4,7 +4,7 @@ import Navbar from './Real_Time_Editor/components/Navbar.jsx'
 import Editor from './Real_Time_Editor/components/Editor.jsx'
 import axios from 'axios'
 
-const FrontendReal_TimeEditor = () => {
+const FrontendReal_TimeEditor = ({admin}) => {
   
 
 
@@ -65,6 +65,7 @@ const FrontendReal_TimeEditor = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
+  admin ?
   return (
     <>
       
@@ -75,6 +76,8 @@ const FrontendReal_TimeEditor = () => {
       <Navbar setId={setId} data={data}/>
     </>
   );
+
+  : return (<>Forbidden</>)
 };
 
 export default FrontendReal_TimeEditor;
