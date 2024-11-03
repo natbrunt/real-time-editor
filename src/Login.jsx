@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
 
 function Login({onLogin}) {
 
@@ -10,7 +10,7 @@ function Login({onLogin}) {
     password: "",
   });
 
-  let navigate = useNavigate();
+
 
   let handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +27,7 @@ function Login({onLogin}) {
         setTimeout(() => {
           onLogin(
             response.data.token)
-          navigate('/secret')
+          
         }, 10);
       } else {
         setError(response.data.message)
