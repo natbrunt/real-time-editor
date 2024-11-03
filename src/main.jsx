@@ -31,7 +31,7 @@ const App = () => {
         const response = await axios.get(import.meta.env.VITE_SERVER_URL+'/obsidianDb/verify-token');
         console.log(response);
         return response.data.ok ? loginHandle(token) : setAdmin(false);}
-   }catch(error){console.log(error)}}
+   }catch(error){console.error(error)}}
   verify_token();
  }, [])
  
