@@ -2,7 +2,6 @@ import { StrictMode, useState, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import FrontendReal_TimeEditor from './FrontendReal_TimeEditor'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'; 
 import Login from './Login'
 import * as jose from 'jose'
 import axios from 'axios'
@@ -26,24 +25,17 @@ const App = () => {
       if(!token){
         setAdmin(false);
       } else {
-        axios.defaults.headers.common["Authorization"] = token;
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`; // Ensure 'Bearer' is included
         const response = await axios.get(import.meta.env.VITE_SERVER_URL+'/obsidianDb/verify-token');
-        console.log(response);
-        return response.data.ok ? loginHandle(token) : setAdmin(false);}
+        return response.data.ok ? (loginHandle(token), console.log('admin')) : (setAdmin(false), console.log('not an admin'));}
    }catch(error){console.log(error)}}
   verify_token();
  }, [token])
  
 
-
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login onLogin={loginHandle} />} />
-        <Route path="/secret" element={admin ? <FrontendReal_TimeEditor /> : <div aria-label="Forbidden">Forbidden</div>} />
-      </Routes>
-    </Router>
-  );
+ if(admin == true) return (<FrontendReal_TimeEditor />)
+ if(admin == false) return(<Login onLogin={loginHandle} token={token} />)
+  else return(<div>mounting</div>)
 };
 
 createRoot(document.getElementById('root')).render(
