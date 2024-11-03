@@ -39,7 +39,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Login onLogin={loginHandle}/>} />
-        <Route path="/secret" element={<FrontendReal_TimeEditor admin={admin}/>}
+        <Route path="/secret" element={<FrontendReal_TimeEditor admin={admin}/>} />
       </Routes>
     </Router>
   );
