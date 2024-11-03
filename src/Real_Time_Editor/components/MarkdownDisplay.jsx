@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm';
 const MarkdownDisplay = ({ content, setEdit }) => {
   return (
     <>
-    <div className='prose text-[#000000] prose-headings:text-black bg-white p-6 rounded-3xl overflow-y-scroll w-screen max-h-[22rem]'>
+    <div className='prose text-[#000000] prose-headings:text-black bg-white p-6 rounded-3xl overflow-y-scroll max-h-[22rem]'>
     <ReactMarkdown 
       children={content} 
       remarkPlugins={[remarkGfm]} 

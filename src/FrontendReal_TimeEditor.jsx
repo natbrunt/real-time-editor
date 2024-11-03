@@ -3,6 +3,8 @@ import MarkdownDisplay from './Real_Time_Editor/components/MarkdownDisplay.jsx';
 import Navbar from './Real_Time_Editor/components/Navbar.jsx'
 import Editor from './Real_Time_Editor/components/Editor.jsx'
 import axios from 'axios'
+import { isMobile, isTablet, isBrowser } from 'react-device-detect';
+
 
 const FrontendReal_TimeEditor = () => {
   
@@ -64,7 +66,7 @@ const FrontendReal_TimeEditor = () => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-
+  if (isMobile) return <div>Not availabe on Mobile</div>
   return (
     <>
       

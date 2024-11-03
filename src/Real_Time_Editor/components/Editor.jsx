@@ -5,7 +5,7 @@ function Editor({text, handleChange, setEdit, save}) {
     <>
     <textarea 
         rows="10"
-        cols="45"
+        cols="35"
         value={text}
         onChange={handleChange}
     />
