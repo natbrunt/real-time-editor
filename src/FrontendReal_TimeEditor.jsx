@@ -65,9 +65,7 @@ const FrontendReal_TimeEditor = ({admin}) => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
-  admin ?
-  return (
-    <>
+  admin ? return (<>
       
       <section className='flex flex-col items-center fixed top-0 left-4 space-y-16'>
         <h1>{data[sessionId].name}</h1>
