@@ -65,7 +65,7 @@ const FrontendReal_TimeEditor = ({admin}) => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
-  admin ? return (<>
+  if (admin == true) return (<>
       
       <section className='flex flex-col items-center fixed top-0 left-4 space-y-16'>
         <h1>{data[sessionId].name}</h1>
@@ -75,7 +75,7 @@ const FrontendReal_TimeEditor = ({admin}) => {
     </>
   );
 
-  : return (<>Forbidden</>)
+  else return (<>Forbidden</>)
 };
 
 export default FrontendReal_TimeEditor;
