@@ -4,10 +4,10 @@ import './index.css'
 import FrontendReal_TimeEditor from './FrontendReal_TimeEditor'
 import Login from './Login'
 import * as jose from 'jose'
-import axios from 'axios'
+
 
 const App = () => {
-  const [admin, setAdmin] = useState(false);
+
   const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")));
 
 
@@ -15,7 +15,7 @@ const App = () => {
 
   let loginHandle = (token) => {
     let decodedToken = jose.decodeJwt(token);
-    setAdmin(decodedToken.admin);
+    setData(decodedToken.admin);
     localStorage.setItem("token", JSON.stringify(token));
   }
 
@@ -23,19 +23,17 @@ const App = () => {
   const verify_token = async () => {
     try {
       if(!token){
-        setAdmin(false);
-      } else {
-        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`; // Ensure 'Bearer' is included
-        const response = await axios.get(import.meta.env.VITE_SERVER_URL+'/obsidianDb/verify-token');
-        return response.data.ok ? (loginHandle(token), console.log('admin')) : (setAdmin(false), console.log('not an admin'));}
+        console.log("No token found")
+      } 
+      else{ loginHandle(token)}
    }catch(error){console.log(error)}}
   verify_token();
  }, [token])
  
 
- if(admin == true) return (<FrontendReal_TimeEditor />)
- if(admin == false) return(<Login onLogin={loginHandle} token={token} />)
-  else return(<div>mounting</div>)
+return (<FrontendReal_TimeEditor />)
+
+  
 };
 
 createRoot(document.getElementById('root')).render(
